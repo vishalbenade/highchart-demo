@@ -1,0 +1,88 @@
+<div style="border: 1px solid black; margin: 5px;" >
+    <div class="row" style="padding: 20px;">
+
+        <div class="col-md-8">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <strong>Select monthly revenue</strong>
+                </div>
+                <div class="col-md-6">
+                    <strong>Select Color</strong>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>January</label>
+                        <input type="number" class="form-control" [(ngModel)]="highchartModel.revenueForJanuary" />
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4">
+                    <select class="form-select" aria-label="Default select example"
+                        [(ngModel)]="highchartModel.colorForJanuary">
+                        <option *ngFor="let color of highchartColors" [value]="color.colorName">
+                            {{color.colorName}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>February</label>
+                        <input type="number" class="form-control" [(ngModel)]="highchartModel.revenueForFebruary" />
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4">
+                    <select class="form-select" aria-label="Default select example"
+                        [(ngModel)]="highchartModel.colorForFebruary">
+                        <option *ngFor="let color of highchartColors" [value]="color.colorName">
+                            {{color.colorName}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>March</label>
+                        <input type="number" class="form-control" [(ngModel)]="highchartModel.revenueForMarch" />
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4">
+                    <select class="form-select" aria-label="Default select example"
+                        [(ngModel)]="highchartModel.colorForMarch">
+                        <option *ngFor="let color of highchartColors" [value]="color.colorName">
+                            {{color.colorName}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-4" style="align-items: center;">
+            <strong>Graph Type</strong>
+            <div class="form-check pt-4" *ngFor="let chartType of highchartTypes">
+                <input type="radio" class="form-check-input" id="radio1" name="optradio"
+                    [value]="chartType.chartTypeName" [(ngModel)]="highchartModel.chartType">{{chartType.chartTypeName}}
+                <label class="form-check-label" for="radio1"></label>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row mt-2" style="padding-left: 20px;">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-primary" (click)="onGenerateChart()">Generate Chart</button>
+        </div>
+    </div>
+
+    <div class="row" style="padding: 20px;">
+        <div [chart]="chart" class="col-md-12"></div>
+    </div>
+</div>
